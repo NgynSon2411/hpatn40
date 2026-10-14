@@ -1,0 +1,284 @@
+<!doctype html>
+
+<html lang="vi">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+
+<title>Hiệp sĩ an toàn nước - 25 câu trắc nghiệm</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(180deg,#e9f8ff,#f6fbff);color:#123}
+
+.wrap{width:min(100%,760px);margin:auto;padding:14px}
+
+.card{background:#fff;border-radius:20px;box-shadow:0 8px 28px #00000012;padding:20px;margin:12px 0}
+
+h1{font-size:27px;line-height:1.2;margin:0 0 8px;color:#075985}
+
+.sub{color:#486581;margin:0 0 12px}
+
+input{width:100%;padding:14px 15px;border:1px solid #cbd5e1;border-radius:12px;font-size:16px;margin:6px 0}
+
+.top{position:sticky;top:0;z-index:10;background:#f6fbffdd;backdrop-filter:blur(8px);padding:8px 0}
+
+.progress{height:9px;background:#dbeafe;border-radius:9px;overflow:hidden}.bar{height:100%;background:#0284c7;width:0}
+
+.qnum{font-weight:700;color:#0369a1;margin-bottom:8px}.qtext{font-size:18px;font-weight:700;line-height:1.45}
+
+.opt{display:flex;gap:10px;align-items:flex-start;border:1px solid #dbe3ea;border-radius:13px;padding:13px;margin:9px 0;cursor:pointer}
+
+.opt:hover{background:#f0f9ff}.opt input{width:auto;margin:3px 0 0}.letter{font-weight:700;color:#075985;min-width:24px}
+
+button{border:0;border-radius:13px;padding:14px 20px;font-size:16px;font-weight:700;cursor:pointer}
+
+.primary{background:#0284c7;color:#fff;width:100%;margin-top:10px}.secondary{background:#e0f2fe;color:#075985}
+
+.hidden{display:none}.result{text-align:center}.score{font-size:48px;font-weight:800;color:#0284c7}
+
+.review{border-top:1px solid #e5e7eb;padding:15px 0;text-align:left}.ok{color:#15803d}.bad{color:#b91c1c}
+
+.small{font-size:13px;color:#64748b}.notice{background:#fff7ed;border:1px solid #fed7aa;padding:12px;border-radius:12px;font-size:14px}
+
+@media(max-width:520px){h1{font-size:23px}.qtext{font-size:17px}.card{padding:16px}}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrap">
+
+<div id="start" class="card">
+
+<h1>🌊 HIỆP SĨ AN TOÀN NƯỚC</h1>
+
+<p class="sub">Bộ 25 câu hỏi trắc nghiệm</p>
+
+<div class="notice">Hãy nhập đầy đủ họ tên, lớp và trường trước khi bắt đầu. Mỗi câu chọn <b>một đáp án</b>.</div>
+
+<input id="name" placeholder="Họ và tên học sinh" autocomplete="name">
+
+<input id="className" placeholder="Lớp" autocomplete="organization-title">
+
+<input id="schoolName" placeholder="Trường" autocomplete="organization">
+
+<button class="primary" onclick="startQuiz()">BẮT ĐẦU LÀM BÀI</button>
+
+</div>
+
+
+
+<div id="quiz" class="hidden">
+
+<div class="top">
+
+<div style="display:flex;justify-content:space-between;font-size:14px;margin-bottom:6px"><span id="counter"></span><span id="answered">0/25</span></div>
+
+<div class="progress"><div id="bar" class="bar"></div></div>
+
+</div>
+
+<div id="questions"></div>
+
+<button class="primary" onclick="submitQuiz()">NỘP BÀI</button>
+
+</div>
+
+
+
+<div id="result" class="card hidden result"></div>
+
+</div>
+
+<script>
+
+const questions = [{"n": 1, "q": "Độ sâu của nước bao nhiêu có thể gây nguy cơ đuối nước cho trẻ em?", "opts": {"A": "Chỉ khi nước sâu qua đầu người", "B": "Chỉ khi nước sâu trên 2 mét", "C": "Mọi mực nước, kể cả nước nông chỉ vài centimet (như xô, chậu, bể nhỏ)", "D": "Khi nước từ ngực trở lên"}, "correct": "C", "explanation": "Trẻ nhỏ có thể bị đuối nước ngay cả ở mực nước rất nông nếu té ngã úp mặt mà không tự đứng dậy được."}, {"n": 2, "q": "Khi đi tắm sông, hồ, ao hoặc biển, nguyên tắc an toàn quan trọng nhất là gì?", "opts": {"A": "Đi cùng bạn bè đồng lứa", "B": "Phải có người lớn biết bơi đi cùng và giám sát", "C": "Mang theo thật nhiều đồ ăn", "D": "Chỉ cần mang theo phao bơi là đủ"}, "correct": "B", "explanation": "Sự giám sát của người lớn biết bơi là yếu tố quan trọng nhất để đảm bảo an toàn tuyệt đối."}, {"n": 3, "q": "Biển báo nào sau đây cảnh báo khu vực cực kỳ nguy hiểm không được bơi?", "opts": {"A": "Biển ghi \"Khu vực tắm biển an toàn\"", "B": "Biển báo cờ xanh", "C": "Biển cảnh báo \"Cấm bơi - Nước sâu, dòng chảy xiết\" hoặc cờ đỏ", "D": "Biển báo hướng dẫn gửi xe"}, "correct": "C", "explanation": "Biển cấm và cờ đỏ đánh dấu khu vực có nguy cơ đuối nước rất cao."}, {"n": 4, "q": "Khi đi trên đò, thuyền hoặc phà, học sinh CẦN làm gì ngay khi bước lên phương tiện?", "opts": {"A": "Chọn chỗ ngồi gần mép nước để ngắm cảnh", "B": "Mặc áo phao đúng cách và ngồi ổn định", "C": "Chạy nhảy đùa giỡn với các bạn", "D": "Đứng dậy chụp ảnh check-in"}, "correct": "B", "explanation": "Áo phao giúp giữ nổi cơ thể ngay lập tức nếu chẳng may xảy ra sự cố lật đò/thuyền."}, {"n": 5, "q": "Thời điểm nào sau đây KHÔNG NÊN xuống bơi?", "opts": {"A": "Ngay sau khi vừa ăn quá no hoặc khi đang quá mệt, nắng gắt", "B": "Buổi sáng sớm khí trời mát mẻ", "C": "Sau khi đã khởi động kỹ 10 - 15 phút", "D": "Buổi chiều mát có người lớn đi cùng"}, "correct": "A", "explanation": "Ăn no gây nặng bụng, dễ nôn mửa; mệt mỏi và nắng gắt dễ dẫn đến kiệt sức, sốc nhiệt, chuột rút."}, {"n": 6, "q": "Tại sao trước khi xuống bơi bắt buộc phải khởi động kỹ các khớp tay, chân, cổ?", "opts": {"A": "Để bơi nhanh hơn các bạn", "B": "Để làm đẹp đội hình", "C": "Để làm nóng cơ thể, phòng tránh chuột rút (co quắp cơ) khi gặp nước lạnh", "D": "Để không bị trôi mất kính bơi"}, "correct": "C", "explanation": "Khởi động giúp hệ cơ và tuần hoàn thích nghi, giảm tối đa nguy cơ co quắp cơ đột ngột dưới nước."}, {"n": 7, "q": "Dòng chảy xa bờ (Current Rip) ở biển nguy hiểm như thế nào đối với người bơi?", "opts": {"A": "Dòng nước cuốn người bơi chìm ngay xuống đáy", "B": "Dòng nước mạnh kéo người bơi từ gần bờ ra xa ngoài biển rất nhanh", "C": "Dòng nước đẩy người bơi đập mạnh vào bờ", "D": "Dòng nước làm cá mập xuất hiện"}, "correct": "B", "explanation": "Dòng chảy xa bờ không nhấn chìm người nhưng sẽ kéo người bơi ra xa bờ, dễ gây hoảng loạn và kiệt sức nếu cố bơi ngược dòng."}, {"n": 8, "q": "Ở nhà, các vật dụng chứa nước như xô, chậu, lu, bể nước cần được quản lý thế nào để an toàn cho em nhỏ?", "opts": {"A": "Mở nắp cho thoáng mát", "B": "Đậy nắp kín hoặc xả hết nước khi không sử dụng", "C": "Đặt xô nước ngay trước cửa ra vào", "D": "Để nhiều đồ chơi nổi trên mặt xô nước"}, "correct": "B", "explanation": "Đậy nắp hoặc xả hết nước giúp loại bỏ nguy cơ trẻ em vô tình ngã úp mặt vào xô/chậu. Chủ đề 2: Kỹ năng tự cứu & Xử lý sự cố dưới nước (Câu 9 - 16)"}, {"n": 9, "q": "Nếu chẳng may bị ngã xuống nước mà KHÔNG BIẾT BƠI, điều quan trọng nhất bạn cần làm là gì?", "opts": {"A": "Hốt hoảng, vùng vẫy đập tay chân liên tục và kêu khóc", "B": "Giữ bình tĩnh, thả lỏng cơ thể, ngửa đầu ra sau để mũi và miệng ngoi lên khỏi mặt nước thở", "C": "Cố gắng ngụp lặn xuống đáy để đạp chân ngoi lên", "D": "Nhắm mắt nín thở hoàn toàn không cử động"}, "correct": "B", "explanation": "Bình tĩnh thả lỏng ngửa mặt (kỹ năng thả nổi sinh tồn) giúp cơ thể tự nổi lên mặt nước để hít thở và chờ cứu hộ."}, {"n": 10, "q": "Khi đang bơi mà bị \"chuột rút\" (co rút bắp chân/bàn chân), bạn nên xử lý thế nào?", "opts": {"A": "Hoảng sợ vẫy vùng thật mạnh", "B": "Giữ bình tĩnh, thả nổi, dùng tay kéo ngược ngón chân về phía cẳng chân để duỗi cơ và gọi hỗ trợ", "C": "Cố gắng bơi thật nhanh bằng chân bị chuột rút", "D": "Chìm xuống đáy nghỉ ngơi một chút"}, "correct": "B", "explanation": "Béo/kéo ngược ngón chân giúp duỗi thẳng nhóm cơ đang bị co rút, kết hợp thả nổi gọi giúp đỡ."}, {"n": 11, "q": "Nếu vô tình bị cuốn vào Dòng chảy xa bờ (Rip current) ở biển, bạn nên bơi thế nào?", "opts": {"A": "Bơi đâm thẳng ngược chiều dòng nước để vào bờ ngay", "B": "Giữ sức thả nổi, bơi song song với đường bờ biển để thoát khỏi vùng dòng chảy rồi mới bơi vào bờ", "C": "Cố gắng lặn sâu xuống đáy biển", "D": "Thả buông xuôi cho dòng nước kéo ra giữa đại dương"}, "correct": "B", "explanation": "Bơi ngược dòng sẽ nhanh chóng bị kiệt sức. Bơi ngang song song với bờ giúp bạn thoát ra khỏi dải dòng chảy hẹp."}, {"n": 12, "q": "Kỹ năng \"Bơi sinh tồn\" (Thả nổi ngửa) có đặc điểm nổi bật nào?", "opts": {"A": "Giúp bơi cực kỳ nhanh để về bờ", "B": "Tốn rất ít năng lượng, giúp cơ thể nổi và thở được trong thời gian dài chờ cứu hộ", "C": "Đòi hỏi phải tập luyện 5 năm mới làm được", "D": "Chỉ áp dụng được ở bể bơi indoor"}, "correct": "B", "explanation": "Thả nổi ngửa tận dụng lực nâng tự nhiên của phổi đầy không khí, tiêu tốn rất ít sức lực."}, {"n": 13, "q": "Khi đi bơi, nếu thấy thời tiết bắt đầu có giông, sấm sét hoặc mưa to, em cần làm gì?", "opts": {"A": "Tiếp tục bơi vì dưới nước không lo bị ướt", "B": "Lên bờ ngay lập tức và tìm nơi trú ẩn an toàn", "C": "Núp dưới các cây to ven bờ sông/bể bơi", "D": "Đeo kính bơi vào và bơi sâu hơn"}, "correct": "B", "explanation": "Mặt nước là môi trường dẫn điện cực tốt, sấm sét khi mưa giông gây nguy cơ bị sét đánh tử vong rất cao."}, {"n": 14, "q": "Khi bị rơi xuống nước mà có mặc áo phao, tư thế giúp giữ nhiệt cơ thể tốt nhất (khi nước lạnh) là gì?", "opts": {"A": "Co hai gối áp sát vào ngực, hai tay ôm chặt lấy thân (Tư thế HELP)", "B": "Sải rộng tay chân ra bốn phía", "C": "Bơi liên tục không dừng lại", "D": "Tháo áo phao ra để dễ cử động"}, "correct": "A", "explanation": "Tư thế co người (HELP - Heat Escape Lessening Posture) giúp giảm thiểu sự mất nhiệt ở các vùng cơ thể nhạy cảm như ngực, nách, bẹn."}, {"n": 15, "q": "Trường hợp nào sau đây khiến người biết bơi vẫn có thể bị đuối nước?", "opts": {"A": "Bị chuột rút đột ngột", "B": "Bị kiệt sức hoặc sốc nhiệt (sốc nước lạnh)", "C": "Bị cuốn vào dòng xoáy/dòng chảy quá mạnh", "D": "Tất cả các trường hợp trên"}, "correct": "D", "explanation": "Dù biết bơi, người bơi vẫn có thể gặp nguy hiểm nếu bị chủ quan, kiệt sức, sốc nhiệt hoặc gặp dòng nước bất lợi."}, {"n": 16, "q": "Dấu hiệu nào chứng tỏ một người đang bị đuối nước thực sự?", "opts": {"A": "Họ vẫy tay rầm rộ, hò hét to tiếng gọi cứu trợ", "B": "Đầu chìm ngập rồi nhô lên thở hổn hển, mắt mở to dại đờ, không thể cất tiếng gọi cứu", "C": "Họ đang bơi ngửa thư giãn", "D": "Họ đang lặn sâu biểu diễn"}, "correct": "B", "explanation": "Đuối nước thực tế thường diễn ra trong im lặng; nạn nhân dồn toàn bộ sức lực để ngoi lên thở nên không thể hô to hay vẫy tay. Chủ đề 3: Kỹ năng cứu đuối an toàn & Sơ cấp cứu (Câu 17 - 25)"}, {"n": 17, "q": "Khi phát hiện có người đang bị đuối nước, hành động ĐẦU TIÊN của học sinh là gì?", "opts": {"A": "Nhảy ngay xuống nước để bơi ra cứu bạn", "B": "Hô khoán thật to để gọi người lớn đến hỗ trợ ngay lập tức", "C": "Bỏ chạy về nhà vì sợ hãi", "D": "Lấy điện thoại ra quay video"}, "correct": "B", "explanation": "Học sinh chưa có đủ kỹ năng và thể lực cứu đuối trực tiếp, cần kêu gọi người lớn hỗ trợ ngay để đảm bảo an toàn."}, {"n": 18, "q": "Nguyên tắc cứu đuối an toàn đối với học sinh (không trực tiếp xuống nước) là gì?", "opts": {"A": "Giữ khoảng cách an toàn trên bờ, ném phao/dây/sào cho nạn nhân bám vào", "B": "Nắm tay nhau thành chuỗi người kéo bạn lên", "C": "Nhảy xuống ôm chặt lấy nạn nhân", "D": "Chờ nạn nhân tự bơi vào"}, "correct": "A", "explanation": "Phương pháp \"Cứu gián tiếp\" bằng vật nổi, sào, dây giúp cứu bạn mà vẫn bảo vệ an toàn tính mạng cho chính mình."}, {"n": 19, "q": "Tại sao học sinh KHÔNG NÊN nắm tay nhau tạo thành \"chuỗi người\" để cứu bạn dưới nước?", "opts": {"A": "Vì làm như vậy rất tốn thời gian", "B": "Vì nếu một người trượt chân sẽ kéo theo cả chuỗi người cùng bị lôi xuống nước gây đuối nước tập thể", "C": "Vì tay sẽ bị đau", "D": "Vì nước sẽ làm ướt quần áo cả nhóm"}, "correct": "B", "explanation": "Thực tế đã có nhiều vụ tai nạn thương tâm đuối nước tập thể do học sinh nắm tay nhau kéo bạn dưới dòng nước xiết."}, {"n": 20, "q": "Số điện thoại đường dây nóng cứu hộ khẩn cấp quốc gia (Tổng đài Bảo vệ Trẻ em) tại Việt Nam là gì?", "opts": {"A": "113", "B": "114", "C": "115", "D": "111"}, "correct": "D", "explanation": "111 là Tổng đài Quốc gia Bảo vệ Trẻ em; 114 là Cảnh sát PCCC và Cứu nạn cứu hộ; 115 là Cấp cứu y tế."}, {"n": 21, "q": "Sau khi đưa được nạn nhân đuối nước lên bờ và nạn nhân BẤT TỈNH, KHÔNG THỞ, việc cần làm ngay là gì?", "opts": {"A": "Vác nạn nhân lên vai chạy dốc nước", "B": "Nhóm lửa hơ nóng cho nạn nhân", "C": "Tiến hành ép tim ngoài lồng ngực và hô hấp nhân tạo (CPR) ngay lập tức", "D": "Đổ nước đường vào miệng nạn nhân"}, "correct": "C", "explanation": "Nạn nhân bị ngưng thở cần được hồi sinh tim phổi (CPR) càng sớm càng tốt để cung cấp oxy cho não."}, {"n": 22, "q": "Mẹo sơ cứu \"Vác nạn nhân lên vai chạy dốc nước\" là ĐÚNG hay SAI?", "opts": {"A": "Đúng, vì giúp nước trong phổi chảy hết ra ngoài", "B": "Sai, vì làm chậm thời gian vàng cấp cứu CPR và có thể làm nạn nhân hít sặc dịch dạ dày vào phổi", "C": "Đúng, là phương pháp y tế khuyên dùng", "D": "Đúng, áp dụng cho trẻ em dưới 5 tuổi"}, "correct": "B", "explanation": "Vác dốc nước là phương pháp sai lầm phổ biến, làm lãng phí thời gian vàng tái tạo nhịp thở cho nạn nhân."}, {"n": 23, "q": "Tần số ép tim ngoài lồng ngực chuẩn khi cấp cứu CPR cho người đuối nước là bao nhiêu?", "opts": {"A": "30 - 40 lần/phút", "B": "60 - 80 lần/phút", "C": "100 - 120 lần/phút", "D": "Trên 150 lần/phút"}, "correct": "C", "explanation": "Tốc độ ép tim chuẩn quốc tế là từ 100 đến 120 lần/phút (nhịp độ nhanh, đặn liên tục)."}, {"n": 24, "q": "Khi đưa được nạn nhân đuối nước còn tỉnh táo lên bờ, chúng ta nên làm gì?", "opts": {"A": "Cho uống ngay nhiều nước lạnh", "B": "Thay quần áo ướt, giữ ấm bằng chăn khô và đưa đến cơ sở y tế gần nhất để kiểm tra", "C": "Cho nạn nhân tự đi bộ về nhà ngay", "D": "Để nạn nhân nằm nguyên tại chỗ mặc quần áo ướt"}, "correct": "B", "explanation": "Giữ ấm tránh hạ thân nhiệt và kiểm tra y tế phòng ngừa biến chứng \"đuối nước thứ cấp\" (phổi bị tổn thương do nước)."}, {"n": 25, "q": "Đâu là thông điệp quan trọng nhất về phòng chống đuối nước mà học sinh cần ghi nhớ?", "opts": {"A": "\"Tôi biết bơi nên không bao giờ bị đuối nước\"", "B": "\"Không tự ý tắm, bơi ở nơi nước sâu, nguy hiểm khi không có người lớn giám sát\"", "C": "\"Thấy bạn đuối nước cứ nhảy xuống cứu trước rồi tính sau\"", "D": "\"Chỉ cần mang theo phao nhựa là có thể bơi ở bất kỳ đâu\""}, "correct": "B", "explanation": "Phòng bệnh hơn chữa bệnh — tuân thủ nguyên tắc an toàn và không tự ý đến vùng nước nguy hiểm là cách bảo vệ bản thân tốt nhất."}];
+
+
+let studentName="", studentClass="", studentSchool="";
+
+// DÁN URL Web App của Google Apps Script vào đây sau khi triển khai.
+const TRACKING_URL = "https://script.google.com/macros/s/AKfycbzOZoVWAk53xV80AixG52KPMz29qqCWGkHHP4jjDQaf1u57NqSBm0vUlUErALxpoAQt/exec";
+// Lưu ý: tên sheet và tên cột tiếng Việt được thiết lập trong Google Apps Script.
+// HTML gửi các trường hoTen, lop, truong, event, score, info đến doPost(e).
+const sessionId = (window.crypto && crypto.randomUUID)
+  ? crypto.randomUUID()
+  : "quiz-" + Date.now() + "-" + Math.random().toString(36).slice(2);
+
+let trackingStarted = false;
+let heartbeatTimer = null;
+
+function sendTracking(event, extra = {}) {
+  if (!TRACKING_URL || TRACKING_URL.includes("DAN_URL_WEB_APP")) {
+    console.warn("Chưa cấu hình TRACKING_URL. Quiz vẫn hoạt động nhưng chưa gửi dữ liệu lên Google Sheets.");
+    return;
+  }
+
+  const payload = {
+    sessionId: sessionId,
+    hoTen: studentName,
+    lop: studentClass,
+    truong: studentSchool,
+    event: event,
+    ...extra
+  };
+
+  // Apps Script đọc JSON từ e.postData.contents.
+  // Dùng text/plain + no-cors để tránh yêu cầu preflight CORS của trình duyệt.
+  fetch(TRACKING_URL, {
+    method: "POST",
+    mode: "no-cors",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload),
+    keepalive: event === "submit" || event === "leave"
+  }).catch(err => console.warn("Không gửi được dữ liệu theo dõi:", err));
+}
+
+function stopHeartbeat() {
+  if (heartbeatTimer) {
+    clearInterval(heartbeatTimer);
+    heartbeatTimer = null;
+  }
+}
+
+
+function startQuiz(){
+
+ studentName=document.getElementById('name').value.trim();
+
+ studentClass=document.getElementById('className').value.trim();
+ studentSchool=document.getElementById('schoolName').value.trim();
+
+ if(!studentName||!studentClass||!studentSchool){alert("Vui lòng nhập đầy đủ họ tên, lớp và trường.");return;}
+  if (!TRACKING_URL || TRACKING_URL.includes("DAN_URL_WEB_APP")) {
+    alert("Quiz chưa được kết nối Google Sheets. Vui lòng điền URL Web App /exec vào biến TRACKING_URL trong file HTML. Bạn vẫn có thể làm bài, nhưng dữ liệu sẽ chưa được lưu.");
+  }
+  trackingStarted = true;
+  sendTracking("start");
+  stopHeartbeat();
+  heartbeatTimer = setInterval(() => sendTracking("heartbeat"), 30000);
+
+ document.getElementById('start').classList.add('hidden');
+
+ document.getElementById('quiz').classList.remove('hidden');
+
+ render();
+
+}
+
+function render(){
+
+ const box=document.getElementById('questions');
+
+ box.innerHTML=questions.map((x,i)=>`
+
+ <div class="card">
+
+   <div class="qnum">Câu ${x.n}</div>
+
+   <div class="qtext">${esc(x.q)}</div>
+
+   ${["A","B","C","D"].map(k=>`
+
+   <label class="opt">
+
+     <input type="radio" name="q${i}" value="${k}" onchange="updateProgress()">
+
+     <span class="letter">${k}.</span><span>${esc(x.opts[k]||"")}</span>
+
+   </label>`).join("")}
+
+ </div>`).join("");
+
+ updateProgress();
+
+}
+
+function updateProgress(){
+
+ let a=questions.filter((_,i)=>document.querySelector(`input[name="q${i}"]:checked`)).length;
+
+ document.getElementById("answered").textContent=a+"/25";
+
+ document.getElementById("bar").style.width=(a/25*100)+"%";
+
+}
+
+function submitQuiz(){
+
+ let answers=questions.map((_,i)=>document.querySelector(`input[name="q${i}"]:checked`)?.value||null);
+
+ let missing=answers.filter(x=>!x).length;
+
+ if(missing && !confirm(`Bạn còn ${missing} câu chưa chọn. Vẫn nộp bài?`)) return;
+
+ let score=questions.reduce((s,x,i)=>s+(answers[i]===x.correct?1:0),0);
+
+ let percent=Math.round(score/25*100);
+  sendTracking("submit", { score: score + "/25", info: "Điểm phần trăm: " + percent + "%" });
+  stopHeartbeat();
+
+ let result=document.getElementById("result");
+
+ document.getElementById("quiz").classList.add("hidden");
+
+ result.classList.remove("hidden");
+
+ result.innerHTML=`<h1>ĐÃ NỘP BÀI</h1>
+
+ <p><b>${esc(studentName)}</b> — Lớp <b>${esc(studentClass)}</b></p>
+ <p>Trường: <b>${esc(studentSchool)}</b></p>
+
+ <div class="score">${score}/25</div><p>Đạt ${percent}%</p>
+
+ <button class="secondary" onclick="showReview()">XEM ĐÁP ÁN & GIẢI THÍCH</button>
+
+ <div id="review" class="hidden"></div>
+
+ <p class="small" style="margin-top:18px">Dữ liệu họ tên, lớp, trường, thời gian tham gia và kết quả sẽ được gửi lên Google Sheets khi đã cấu hình URL Apps Script đúng.</p>`;
+
+ window._answers=answers;
+
+}
+
+function showReview(){
+
+ const r=document.getElementById("review"); r.classList.remove("hidden");
+
+ r.innerHTML=questions.map((x,i)=>{
+
+   const a=window._answers[i]; const ok=a===x.correct;
+
+   return `<div class="review"><b>Câu ${x.n}</b> — <span class="${ok?'ok':'bad'}">${ok?'Đúng':'Chưa đúng'}</span><br>
+
+   Bạn chọn: <b>${a||"Chưa chọn"}</b> | Đáp án: <b>${x.correct}</b>
+
+   <div class="small">${esc(x.explanation)}</div></div>`;
+
+ }).join("");
+
+}
+
+
+// Ghi nhận khi người học đóng tab/chuyển trang; trình duyệt có thể không gửi được
+// trong một số trường hợp, vì vậy heartbeat là tín hiệu phụ để nhận biết hoạt động gần nhất.
+window.addEventListener("pagehide", () => {
+  if (trackingStarted) {
+    sendTracking("leave", { info: "Người dùng rời trang hoặc đóng tab" });
+    stopHeartbeat();
+  }
+});
+
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));}
+
+</script>
+
+</body></html>
